@@ -10,13 +10,12 @@ using namespace pros;
 
 const int l_mtr = 5;
 const int r_mtr = 10;
-const int lb_mtr = 1;
-const int rb_mtr = 6;
 const int r_tread = 15;
 const int l_tread = 9;
 const int l_arm = 7;
 const int r_arm = 20;
 const int placer = 8;
+const int strafe = 18;
 const auto WHEEL_DIAMETER = 4_in;
 const auto CHASSIS_WIDTH = 17.5_in;
 
@@ -96,7 +95,52 @@ void outtake(){
   while (true){
   motor_move(l_tread, -127);
   motor_move(r_tread, 127);
+  }
 }
+void intake_timed(double x){
+  intake_run();
+  delay(x);
+  intake_end();
+}
+
+void forward_set(double speed, QLength x){
+  chassis.setMaxVelocity(speed);
+  chassis.moveDistance(x);
+  chassis.setMaxVelocity(100);
+}
+
+void forward(QLength x){
+  chassis.moveDistanceAsync(x);
+}
+
+void up_speed(double position, double speed){
+  double posplusfive = position+5;
+  double posminusfive = position-5;
+  motor_move_absolute(l_arm, position, speed);
+  while (!((motor_get_position(l_arm) < posplusfive) && (motor_get_position(l_arm) > posminusfive))) {
+    delay(2);
+  }
+  motor_move_absolute(r_arm, -position, speed);
+  while (!((motor_get_position(r_arm) < -posplusfive) && (motor_get_position(r_arm) > -posminusfive))) {
+    delay(2);
+  }
+}
+
+void down_speed(double position, double speed){
+  double posplusfive = position+5;
+  double posminusfive = position-5;
+  motor_move_absolute(l_arm, -position, speed);
+  while (!((motor_get_position(l_arm) < -posplusfive) && (motor_get_position(l_arm) > -posminusfive))) {
+    delay(2);
+  }
+  motor_move_absolute(r_arm, position, speed);
+  while (!((motor_get_position(r_arm) < posplusfive) && (motor_get_position(r_arm) > posminusfive))) {
+    delay(2);
+  }
+}
+
+void directionMove(double x){
+  motor_move_absolute(strafe, x, 100);
 }
 
 #endif
