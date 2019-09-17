@@ -2,14 +2,14 @@
 using namespace okapi;
 
 //define port names
-#define l_mtr_port 1 //left front motor
-#define r_mtr_port 10 //right front motor
-#define l_arm_port 7 //left lift motor
-#define r_arm_port 6 //right lift motor
-#define l_tread_port 15 //left intake motor
-#define r_tread_port 9 //right intake
+#define l_mtr_port 10 //left front motor
+#define r_mtr_port 1 //right front motor
+#define l_arm_port 19 //left lift motor
+#define r_arm_port 12 //right lift motor
+#define l_tread_port 12 //left intake motor
+#define r_tread_port 11 //right intake
 #define strafe_port 18 //strafe motor
-#define placer_port 13 //placer lift motor
+#define placer_port 8 //placer lift motor
 
 /**
  * Runs the operator control code. This function will be started in its own task

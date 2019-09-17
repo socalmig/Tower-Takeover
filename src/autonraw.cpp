@@ -355,4 +355,25 @@ void blue_auton_top2(){
   delay(2);
 }
 
+
+
+
+
+void skills(){
+
+  motor_set_brake_mode(placer, E_MOTOR_BRAKE_HOLD);
+  motor_set_gearing(placer, E_MOTOR_GEARSET_36);
+  motor_set_brake_mode(l_arm, E_MOTOR_BRAKE_HOLD);
+  motor_set_gearing(l_arm, E_MOTOR_GEARSET_36);
+  motor_set_brake_mode(r_arm, E_MOTOR_BRAKE_HOLD);
+  motor_set_gearing(r_arm, E_MOTOR_GEARSET_36);
+  motor_set_brake_mode(l_tread, E_MOTOR_BRAKE_HOLD);
+  motor_set_brake_mode(r_tread, E_MOTOR_BRAKE_HOLD);
+
+  score();
+  delay(75);
+  bringIn();
+  
+}
+
 #endif

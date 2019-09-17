@@ -8,13 +8,13 @@ using namespace pros;
 #ifndef MOTORS_hpp
 #define MOTORS_hpp
 
-const int l_mtr = 5;
-const int r_mtr = 10;
-const int r_tread = 15;
-const int l_tread = 9;
-const int l_arm = 7;
-const int r_arm = 20;
-const int placer = 8;
+const int l_mtr = 10; //
+const int r_mtr = 1; //
+const int r_tread = 11; //
+const int l_tread = 20; //
+const int l_arm = 19; //
+const int r_arm = 12; //
+const int placer = 8; //
 const int strafe = 18;
 const auto WHEEL_DIAMETER = 4_in;
 const auto CHASSIS_WIDTH = 17.5_in;
