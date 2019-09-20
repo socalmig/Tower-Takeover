@@ -30,10 +30,8 @@ void intake_run(){
   motor_set_brake_mode(l_tread, E_MOTOR_BRAKE_HOLD);
   motor_set_brake_mode(r_tread, E_MOTOR_BRAKE_HOLD);
   */
-  while (true){
     motor_move(l_tread, -127);
     motor_move(r_tread, 127);
-  }
 }
 
 void intake_end(){
@@ -41,15 +39,14 @@ void intake_end(){
   motor_set_brake_mode(l_tread, E_MOTOR_BRAKE_HOLD);
   motor_set_brake_mode(r_tread, E_MOTOR_BRAKE_HOLD);
   */
-  while(true){
     motor_move(l_tread, 0);
     motor_move(r_tread, 0);
-  }
 }
 
 void slowForward(QLength x){
   chassis.setMaxVoltage(100);
   chassis.moveDistanceAsync(x);
+  chassis.waitUntilSettled();
   chassis.setMaxVoltage(127);
 }
 
@@ -59,9 +56,9 @@ void score(){
   motor_set_gearing(placer, E_MOTOR_GEARSET_36);
   */
   motor_move_absolute(placer, 60, 100);
-  while(!(motor_get_position(placer) < 65) && (motor_get_position(placer) > 55)){
-    delay(2);
-  }
+  //while(!(motor_get_position(placer) < 65) && (motor_get_position(placer) > 55)){
+  //  delay(2);
+  //}
 }
 
 void bringIn(){
@@ -70,9 +67,9 @@ void bringIn(){
   motor_set_gearing(placer, E_MOTOR_GEARSET_36);
   */
   motor_move_absolute(placer, -60, 100);
-  while(!(motor_get_position(placer) < -65) && (motor_get_position(placer) > -55)){
-    delay(2);
-  }
+  //while(!(motor_get_position(placer) < -65) && (motor_get_position(placer) > -55)){
+    //delay(2);
+  //}
 }
 
 void up(double x){
@@ -92,10 +89,8 @@ void down(double x){
 }
 
 void outtake(){
-  while (true){
   motor_move(l_tread, -127);
   motor_move(r_tread, 127);
-  }
 }
 void intake_timed(double x){
   intake_run();
@@ -106,11 +101,13 @@ void intake_timed(double x){
 void forward_set(double speed, QLength x){
   chassis.setMaxVelocity(speed);
   chassis.moveDistance(x);
+  chassis.waitUntilSettled();
   chassis.setMaxVelocity(100);
 }
 
 void forward(QLength x){
   chassis.moveDistanceAsync(x);
+  chassis.waitUntilSettled();
 }
 
 void up_speed(double position, double speed){

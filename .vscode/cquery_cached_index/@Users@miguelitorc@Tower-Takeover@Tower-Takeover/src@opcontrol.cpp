@@ -6,7 +6,7 @@ using namespace okapi;
 #define r_mtr_port 1 //right front motor
 #define l_arm_port 19 //left lift motor
 #define r_arm_port 12 //right lift motor
-#define l_tread_port 12 //left intake motor
+#define l_tread_port 20 //left intake motor
 #define r_tread_port 11 //right intake
 #define strafe_port 18 //strafe motor
 #define placer_port 8 //placer lift motor
@@ -75,13 +75,13 @@ void opcontrol() {
 
 //Start lift * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 			if (master.get_digital(DIGITAL_R2))	{
-				r_arm.move_velocity(40);
-				l_arm.move_velocity(-40);
+				r_arm.move_velocity(-40);
+				l_arm.move_velocity(40);
 			}
 
 			else if (master.get_digital(DIGITAL_R1))	{
-				r_arm.move_velocity(-100);
-				l_arm.move_velocity(100);
+				r_arm.move_velocity(100);
+				l_arm.move_velocity(-100);
 			}
 
 			else {
@@ -93,13 +93,13 @@ void opcontrol() {
 
 //Start intake * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 				if (master.get_digital(DIGITAL_L2))	{
-					l_tread.move_velocity(-50);
-					r_tread.move_velocity(50);
+					l_tread.move_velocity(-100);
+					r_tread.move_velocity(100);
 				}
 
 				else if (master.get_digital(DIGITAL_L1)) {
-					l_tread.move_velocity (50);
-					r_tread.move_velocity (-50);
+					l_tread.move_velocity (100);
+					r_tread.move_velocity (-100);
 				}
 
 				else {
@@ -109,6 +109,7 @@ void opcontrol() {
 //End intake * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 //Start Strafe * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+/*
 						if (master.get_digital(DIGITAL_LEFT)){
 							strafe.move_velocity (-60);
 						}
@@ -120,20 +121,23 @@ void opcontrol() {
 						else {
 							strafe.move_velocity(0);
 						}
+*/
 //End Strafe * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 //Start placer * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 								if (master.get_digital(DIGITAL_X)){
-									placer.move_velocity(80);
+									placer.move_velocity(50);
 								}
 
 								else if (master.get_digital(DIGITAL_A)){
-									placer.move_velocity(-80);
+									placer.move_velocity(-50);
 								}
 
 								else {
 									placer.move_velocity(0);
 								}
+
 //End placer * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 		pros::delay(2);

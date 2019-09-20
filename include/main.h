@@ -67,6 +67,9 @@ void initialize(void);
 void disabled(void);
 void competition_initialize(void);
 void opcontrol(void);
+
+void inc_auton_mode();
+void dec_auton_mode();
 #ifdef __cplusplus
 }
 #endif

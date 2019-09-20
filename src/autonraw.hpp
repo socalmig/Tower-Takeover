@@ -7,8 +7,8 @@ using namespace okapi;
 using namespace pros::c;
 using namespace pros;
 
-#ifndef AUTONRAW_cpp
-#define AUTONRAW_cpp
+#ifndef AUTONRAW_hpp
+#define AUTONRAW_hpp
 
 void red_auton_bottom1() {
 
@@ -373,7 +373,7 @@ void skills(){
   score();
   delay(75);
   bringIn();
-  
+
 }
 
 #endif
